@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"  >
+    <title>async await</title>
+</head>
+<body>
+    <ul class="my-list">
+
+    </ul>
+
+
+    <script> 
+        // async function hello (name){
+        //     return 'Hello '+ name;
+        // }
+        // const greeting = hello("jisan");
+        // console.log(greeting);
+        // greeting.then(response => console.log(response))
+
+        
+        async function loadData(){
+            const response = await fetch('https://jsonplaholder.typicode.com/users');
+            const data = await response.json();
+            displayData(data);
+            return data;
+        }
+        loadData();
+
+
+
+
+        // function loadData(){
+        //     fetch('https://www.jsonholdertypecode')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         displayData(data);
+        //     })
+        // }
+        // loadData();
+        function displayData(data){
+            const parentNode = document.getElementById("my-list");
+            for (let i = 0; i < data.length; i++) {
+                const user = data[i];
+                const item = document.createElement('li');
+                item.innerText = user;
+                parentNode.appendChild(item);
+                
+            }
+        }
+
+
+
+    </script>
+    
+</body>
+</html>
